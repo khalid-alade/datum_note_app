@@ -1,61 +1,50 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--Import materialize.css-->
     <link type="text/css" rel="stylesheet" href="{{url_for('static', filename='css/materialize.min.css')}}" />
     <link rel="stylesheet" href="{{url_for('static', filename='css/all.css')}}">
 
-    <title>LOG IN</title>
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Datum</title>
     <style>
-        .login {
-
-
-            width: 500px;
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-
-        }
-
         .danger {
             color: red;
             font-size: 13px;
-            font-weight: bold;
         }
     </style>
 </head>
 
 <body>
-    <!-- navbar -->
+
+
     <nav>
         <div class="nav-wrapper purple center">
-            <a href="#" style="font-family: fantasy; font-weight: 100; font-size: 32px; color: black;"> &ThinSpace;
-                Datum</a>
+            <a href="#"  style="font-family: fantasy; font-weight: 100; font-size: 32px; color: black;">
+                &ThinSpace; Datum</a>
         </div>
     </nav>
 
+
     <div class="container">
-
+        <div style="text-align: center; color: red;">
+            {% with messages = get_flashed_messages() %}
+            {% if messages %}
+            {% for message in messages %}
+            <b>{{message}}</b>
+            {% endfor %}
+            {% endif %}
+            {% endwith %}
+        </div>
         <div class="row">
-            <div class="flash" style="text-align: center; color: rgb(58, 13, 117); margin-top: 20px;">
-                {% with messages = get_flashed_messages() %}
-                {% if messages %}
-                {% for message in messages %}
-                <b>{{message}}</b>
-                {% endfor %}
-                {% endif %}
-                {% endwith %}
-            </div>
-            <div class="login l6 s12"
-                style="box-shadow: 2px 3px 10px black; padding: 20px; border-radius: 10px; color: rgb(0, 0, 0);">
-
-                <h6 style="text-align: center; font-weight: bolder;">Log in to view your notes</h6>
-                <form novalidate action="" method="post">
+            <div class="col s12 l8 offset-l2" style="margin-top: 20px;">
+                <form novalidate action="" method="post"
+                    style="box-shadow: 2px 3px 5px; padding: 20px; border-radius: 10px;">
                     {{ form.hidden_tag() }}
+                    <h5 class="center-align"><b>Login to view your notes</b></h5>
+
                     <div class="input-field">
                         {{ form.email.label }}
                         {{ form.email }}
@@ -63,7 +52,6 @@
                         <span class="danger">{{ error }}</span>
                         {% endfor %}
                     </div>
-
                     <div class="input-field">
                         {{ form.password.label }}
                         {{ form.password }}
@@ -71,18 +59,16 @@
                         <span class="danger">{{ error }}</span>
                         {% endfor %}
                     </div>
-
-                    <button type="submit" class="btn"
-                        style=" position:relative; left:50%; transform: translateX(-50%);">Login</button>
+                    <div class="input field center">
+                        <button class="btn black white-text">Login</button>
+                    </div>
                     <p>
-                        <span>Don't have an account?</span> <a class="cyan-text" href="{{ url_for('register') }}"> <b>
-                                Sign up </b> </a>
+                        <span>Don't have an account?</span> <a class="cyan-text" href="{{ url_for('register') }}"> <b>Sign up</b> </a>
                     </p>
                 </form>
             </div>
+
         </div>
-
-
     </div>
     <!--JavaScript at end of body for optimized loading-->
     <script type="text/javascript" src="{{url_for('static', filename='js/materialize.min.js')}}"></script>
