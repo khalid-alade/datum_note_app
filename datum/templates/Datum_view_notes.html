@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Datum notes home</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='css/Datum_home.css')}}">
+</head>
+<style>
+    .noteDiv {
+        overflow: auto;
+    }
+
+    .NoteShower {
+        width: 66%;
+    }
+</style>
+
+<body>
+    <!-- Two divs in one wrapper div -->
+    <div class="AllWrapper">
+        <!-- The right side div -->
+        <div class="NoteShower">
+
+            {% with messages = get_flashed_messages() %}
+            {% if messages %}
+            {% for message in messages %}
+            <div class="flash" style="text-align: center; color: rgb(0, 0, 0);">
+                <b>{{message}}</b>
+            </div>
+            {% endfor %}
+            {% endif %}
+            {% endwith %}
+
+            <div class="add">
+            </div>
+            <!-- /note/{{note.id}}/edit -->
+            <form action="" method="post">
+                <div class="noteDiv">
+                    <input type="text" class="title" name="userEntryTitle" Value="{{note.title}}">
+
+                    <textarea class="text" name="userEntryContent" value="{{note.content}}">{{note.content}}</textarea>
+                    <div class="imgDiv">
+                    </div>
+                </div>
+                <div class="checkMark">
+                    <button class="check" type="submit">
+                        &check;
+                    </button>
+                </div>
+            </form>
+        </div>
+        <!-- Right side div ends -->
+    </div>
+</body>
+
+</html>

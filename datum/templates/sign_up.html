@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <!--Import materialize.css-->
+    <link type="text/css" rel="stylesheet" href="{{url_for('static', filename='css/materialize.min.css')}}" />
+    <link rel="stylesheet" href="{{url_for('static', filename='css/all.css')}}">
+
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Datum</title>
+    <style>
+        .danger{
+            color: red;
+            font-size: 13px;
+        }
+    </style>
+</head>
+
+<body>
+
+
+    <nav>
+        <div class="nav-wrapper purple">
+            <a href="#" class="left" style="font-family: fantasy; font-weight: 100; font-size: 32px; color: black;">
+                &ThinSpace; Datum</a>
+            <a href="{{ url_for('login') }}" class="right"><button class="btn cyan">Login</button> &ThinSpace;</a>
+        </div>
+    </nav>
+
+
+    <div class="container">
+        <div style="text-align: center; color: red;">
+            {% with messages = get_flashed_messages() %}
+            {% if messages %}
+            {% for message in messages %}
+            <b>{{message}}</b>
+            {% endfor %}
+            {% endif %}
+            {% endwith %}
+        </div>
+        <div class="row">
+            <div class="col s12 l8 offset-l2" style="margin-top: 20px;">
+                <form novalidate action="" method="post" style="box-shadow: 2px 3px 5px; padding: 20px; border-radius: 10px;">
+                    {{ form.hidden_tag() }}
+                    <h5 class="center-align"> SIGN UP</h5>
+
+                    <div class="input-field">
+                        {{ form.username.label }}
+                        {{ form.username }}
+                        {% for error in form.username.errors %}
+                        <span class="danger">{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                    <div class="input-field">
+                        {{ form.email.label }}
+                        {{ form.email }}
+                        {% for error in form.email.errors %}
+                        <span class="danger">{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                    <div class="input-field">
+                    {{ form.password.label }}
+                        {{ form.password }}
+                        {% for error in form.password.errors %}
+                        <span class="danger">{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                    <div class="input-field">
+                    {{ form.confirm_password.label }}
+                        {{ form.confirm_password }}
+                        {% for error in form.confirm_password.errors %}
+                        <span class="danger">{{ error }}</span>
+                        {% endfor %}
+                    </div>
+
+                        <div class="input field center">
+                            <button class="btn black white-text">SIGN UP</button>
+                        </div>
+                    <p>
+                            <span>Already have an account?</span> <a class="cyan-text" href="{{ url_for('login') }}"> <b> Sign in </b> </a>
+                    </p>
+                </form>
+            </div>
+
+        </div>
+    </div>
+    <!--JavaScript at end of body for optimized loading-->
+    <script type="text/javascript" src="{{url_for('static', filename='js/materialize.min.js')}}"></script>
+</body>
+
+</html>
