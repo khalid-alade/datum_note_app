@@ -54,22 +54,23 @@ def logout():
     
 
 @app.route('/note/new', methods=['GET', 'POST'])
-@login_required
 def new_note():
-    if request.method == 'POST':
-        note_title = request.form['userEntryTitle']
-        note_content = request.form['userEntryContent']
-        if note_title == '' and note_content != '':
-            note_title = 'Untitled note'
-        if note_title == '' and note_content == '':
-            flash('Please enter a note before submitting')
+    if current_user.is_authenticated:
+        if request.method == 'POST':
+            note_title = request.form['userEntryTitle']
+            note_content = request.form['userEntryContent']
+            if note_title == '' and note_content != '':
+                note_title = 'Untitled note'
+            if note_title == '' and note_content == '':
+                flash('Please enter a note before submitting')
+                return redirect(url_for('home'))
+            new_note = Note(title=note_title, content=note_content, author=current_user)
+            db.session.add(new_note)
+            db.session.commit()
             return redirect(url_for('home'))
-        new_note = Note(title=note_title, content=note_content, author=current_user)
-        db.session.add(new_note)
-        db.session.commit()
-        return redirect(url_for('home'))
-    else:
-        return render_template('Datum_home.html')
+        else:
+            return render_template('Datum_home.html')
+    return redirect(url_for('login'))
 
 
 @app.route('/note/<int:id>/edit', methods=['GET', 'POST'])
