@@ -148,6 +148,7 @@
     justify-content: center;
     color: rgb(196, 191, 191);
     transition: 0.4s;
+    white-space: nowrap;
 }
 .NotesLinkDiv:hover{
     color: white;
