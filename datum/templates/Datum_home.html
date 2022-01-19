@@ -71,7 +71,7 @@
 
                         {% for note in notes %}
                         <div class="HalfContent">
-                            <!-- <span class="optBtn">&ctdot;</span> -->
+                            <span class="optBtn">&ctdot;</span>
                             <div class="deleteEdit">
                                 <a href="{{ url_for('delete', id=note.id) }}" class="edit"><img class="delete"
                                         src="{{url_for('static', filename='img/trash_bin_icon.png')}}"></a>

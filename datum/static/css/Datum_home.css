@@ -195,8 +195,8 @@
     font-size: 20px;
     font-weight: 800;
     cursor: pointer;
-    top: 3px;
-    right: 3px;
+    top: 9px;
+    right: 9px;
     transform: rotate(90deg);
     transition: 0.4s;
     z-index: 98;
@@ -205,18 +205,19 @@
     color: blue;
 }
 .deleteEdit{
-    width: 37px;
-    height: 50%;
+    width: 30px;
+    height: 40%;
     position: absolute;
-    transform: translateY(-50%);
-    top: 50%;
-    right: 25px;
-    background-color: rgb(192, 187, 187);
-    border-radius: 10px;
+    /* transform: translateY(-50%); */
+    bottom: 20%;
+    right: 35px;
+    background-color: rgb(0, 0, 0);
+    border-radius: 7px;
+    padding: 3px;
     display: flex;
     align-items: center;
     justify-content: center;
-    /* display: none; */
+    display: none;
 }
 .open{
     animation-name: optFade;
@@ -417,6 +418,8 @@ form{
 .delete{
     width: 20px;
     transition: 0.4s;
+    transform: translateY(3px);
+    filter: invert(1);
 }
 .delete:hover{
     transform: scale(1.2);

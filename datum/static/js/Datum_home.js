@@ -16,3 +16,12 @@ set.addEventListener('click', function(){
 // gallery.addEventListener('click', function(){
 //     fileDiv.classList.toggle('slide2')
 // })
+
+var noteDivs = document.querySelectorAll('.HalfContent');
+Array.from(noteDivs).forEach(function (noteDiv) {
+    noteDiv.addEventListener('click', function (e) {
+        if (e.target.className == 'optBtn') {
+            noteDiv.children[1].classList.toggle('open')
+        }
+    })
+})
