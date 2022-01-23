@@ -11,6 +11,14 @@
 </head>
 
 <body>
+    <div class="searchDiv">
+        <form>
+            <input type="text" placeholder="Search by note title">
+            <span class="cancelDiv">
+               <strong><b>&times;</b></strong>
+            </span>
+        </form>
+    </div>
     <!-- Two divs in one wrapper div -->
     <div class="AllWrapper">
 
@@ -47,6 +55,13 @@
                 </div>
                 <!-- the notes title and half content -->
                 <div class="arrangeCont">
+
+                    <!-- search button -->
+                    <div class="searchBtnDiv">
+                        <button class="searchBtn" id="searchBtn1"><img src="{{url_for('static', filename='img/search_icon.png')}}"></button>
+                    </div>
+                    <!-- search button -->
+
                     <div class="Options">
                         {% if current_user.is_authenticated %}
                         <a href="{{ url_for('logout') }}" class="NotesLink">
