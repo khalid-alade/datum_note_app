@@ -45,6 +45,13 @@ searchBtnDiv.addEventListener('click', function (e) {
 cancelDiv.addEventListener('click', function () {
     searchBarDiv.classList.add('closer');
     searchBarDiv.classList.remove('opener');
+    while (searchBar.value != '') {
+        searchBar.value = '';
+        let notes1 = document.querySelectorAll('.HalfContent')
+        Array.from(notes1).forEach((note) => {
+            note.style.display = 'block';
+        })
+    }
 })
 
 // To search for a note by note-title
