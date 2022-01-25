@@ -56,11 +56,13 @@
                 <!-- the notes title and half content -->
                 <div class="arrangeCont">
 
+                    {% if current_user.is_authenticated %}
                     <!-- search button -->
                     <div class="searchBtnDiv">
                         <button class="searchBtn" id="searchBtn1"><img src="{{url_for('static', filename='img/search_icon.png')}}"></button>
                     </div>
                     <!-- search button -->
+                    {% endif %}
 
                     <div class="Options">
                         {% if current_user.is_authenticated %}
